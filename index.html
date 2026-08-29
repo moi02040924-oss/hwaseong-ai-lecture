@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>화성시민대학 · AI로 여는 제2인생 · 1회차</title>
+<style>
+  :root{--main:#C2410C;--main-d:#9A3412;--main-l:#FFF3EC;--paper:#FAFAF8;--ink:#22242B;--sub:#5A5E6B;--line:#EADFD6;}
+  *{box-sizing:border-box;margin:0;}
+  body{background:var(--paper);color:var(--ink);font-family:"Malgun Gothic","맑은 고딕",system-ui,sans-serif;
+    font-size:18px;line-height:1.65;word-break:keep-all;}
+  .wrap{max-width:640px;margin:0 auto;padding:0 18px 60px;}
+  header{background:linear-gradient(160deg,var(--main),var(--main-d));color:#fff;text-align:center;
+    padding:34px 20px 30px;border-radius:0 0 22px 22px;}
+  header .badge{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);
+    padding:5px 15px;border-radius:999px;font-size:15px;font-weight:700;margin-bottom:12px;}
+  header h1{font-size:25px;font-weight:800;margin-bottom:8px;}
+  header p{font-size:16px;opacity:.95;}
+  .lead{background:var(--main-l);color:var(--main-d);border-radius:14px;padding:15px 18px;margin:24px 0 18px;font-size:16px;}
+  .sec{font-size:16px;font-weight:800;color:var(--main-d);margin:26px 0 10px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;margin-bottom:14px;
+    box-shadow:0 2px 8px rgba(60,40,20,.05);}
+  .card h2{font-size:18.5px;color:var(--main-d);margin-bottom:4px;}
+  .card .desc{font-size:15px;color:var(--sub);margin-bottom:10px;}
+  .promptbox{position:relative;background:#2b2b2b;color:#f4f4f4;border-radius:12px;padding:14px 14px 14px;
+    font-size:15px;line-height:1.55;white-space:pre-wrap;margin-top:8px;}
+  .copybtn{display:inline-block;margin-top:10px;background:var(--main);color:#fff;border:none;
+    padding:11px 20px;border-radius:10px;font-size:15.5px;font-weight:800;cursor:pointer;font-family:inherit;}
+  .copybtn:active{background:var(--main-d);}
+  .tip{background:#FFF8F2;border-left:4px solid var(--main);border-radius:8px;padding:11px 14px;font-size:14.5px;color:#6b4a35;margin-top:8px;}
+  footer{text-align:center;color:var(--sub);font-size:14px;margin-top:30px;line-height:1.7;}
+  .step{font-size:15px;color:var(--sub);}
+</style>
+</head>
+<body>
+<div id="pwgate" style="position:fixed;inset:0;background:#9A3412;color:#fff;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Malgun Gothic',sans-serif;padding:20px;text-align:center;">
+<div style="font-size:23px;font-weight:800;margin-bottom:8px;">🔒 화성시민대학 AI 배움터</div>
+<div style="font-size:16px;opacity:.9;margin-bottom:18px;">비밀번호를 입력하세요</div>
+<input id="pwin" type="password" autocomplete="off" style="font-size:18px;padding:13px 14px;border-radius:10px;border:none;width:min(260px,80vw);text-align:center;" placeholder="비밀번호">
+<button id="pwbtn" style="margin-top:12px;font-size:17px;font-weight:800;padding:13px 30px;border:none;border-radius:10px;background:#FFE3D0;color:#9A3412;cursor:pointer;">들어가기</button>
+<div id="pwerr" style="margin-top:10px;font-size:14px;color:#FFD6D6;min-height:18px;"></div>
+</div>
+<script>
+(function(){var PW="HS2026";
+try{if(sessionStorage.getItem('hs_ok')==='1'){var g=document.getElementById('pwgate');if(g)g.remove();return;}}catch(e){}
+function h2e(s){var Cho="ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ".split(""),Jung="ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ".split(""),Jong="_ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ".split("");var m={"ㅂ":"q","ㅃ":"q","ㅈ":"w","ㅉ":"w","ㄷ":"e","ㄸ":"e","ㄱ":"r","ㄲ":"r","ㅅ":"t","ㅆ":"t","ㅛ":"y","ㅕ":"u","ㅑ":"i","ㅐ":"o","ㅒ":"o","ㅔ":"p","ㅖ":"p","ㅁ":"a","ㄴ":"s","ㅇ":"d","ㄹ":"f","ㅎ":"g","ㅗ":"h","ㅓ":"j","ㅏ":"k","ㅣ":"l","ㅋ":"z","ㅌ":"x","ㅊ":"c","ㅍ":"v","ㅠ":"b","ㅜ":"n","ㅡ":"m"};var cp={"ㅘ":"ㅗㅏ","ㅙ":"ㅗㅐ","ㅚ":"ㅗㅣ","ㅝ":"ㅜㅓ","ㅞ":"ㅜㅔ","ㅟ":"ㅜㅣ","ㅢ":"ㅡㅣ","ㄳ":"ㄱㅅ","ㄵ":"ㄴㅈ","ㄶ":"ㄴㅎ","ㄺ":"ㄹㄱ","ㄻ":"ㄹㅁ","ㄼ":"ㄹㅂ","ㄽ":"ㄹㅅ","ㄾ":"ㄹㅌ","ㄿ":"ㄹㅍ","ㅀ":"ㄹㅎ","ㅄ":"ㅂㅅ"};function jm(ch){if(cp[ch])return jm(cp[ch][0])+jm(cp[ch][1]);return m[ch]||ch;}var out="";for(var i=0;i<s.length;i++){var c=s[i],code=s.charCodeAt(i);if(code>=0xAC00&&code<=0xD7A3){var x=code-0xAC00;out+=jm(Cho[Math.floor(x/588)])+jm(Jung[Math.floor((x%588)/28)]);var jo=Jong[x%28];if(jo!=="_")out+=jm(jo);}else{out+=jm(c);}}return out;}
+function norm(v){return h2e(v.trim()).toLowerCase();}
+function t(){var v=document.getElementById('pwin').value;if(norm(v)===norm(PW)){try{sessionStorage.setItem('hs_ok','1');}catch(e){}var g=document.getElementById('pwgate');if(g)g.remove();}else{document.getElementById('pwerr').textContent='비밀번호가 틀렸어요';}}
+document.getElementById('pwbtn').addEventListener('click',t);
+document.getElementById('pwin').addEventListener('keydown',function(e){if(e.key==='Enter')t();});
+document.getElementById('pwin').focus();})();
+</script>
+
+<header>
+  <div class="badge">AI로 여는 나의 제2인생</div>
+  <h1>1회차 · AI 첫걸음 &amp; 스마트 자기탐색</h1>
+  <p>화성시민대학 · 강사 임금희 · 2026</p>
+</header>
+<div class="wrap">
+  <div class="lead">📱 아래 프롬프트는 <b>[복사하기]</b>를 누르면 바로 복사돼요. ( ) 안만 내 것으로 바꿔서 ChatGPT에 붙여넣으세요.</div>
+
+  <div class="sec">① 준비 — ChatGPT 시작</div>
+  <div class="card">
+    <h2>ChatGPT 5단계로 시작</h2>
+    <div class="desc">크롬/엣지에서 chat.openai.com 접속</div>
+    <div class="step">① 접속 → [Sign up] → ② 이메일·비밀번호(8자↑) → ③ 이메일 인증(스팸함도 확인) → ④ 이름 입력 → ⑤ 첫 질문 시작</div>
+    <div class="tip">💡 타이핑이 어려우면 스마트폰 마이크 버튼으로 <b>말해서</b> 질문하세요.</div>
+  </div>
+
+  <div class="sec">② AI로 나를 다각도로 분석하기</div>
+
+  <div class="card">
+    <h2>강점 발견</h2>
+    <div class="desc">내 경력에서 강점 3가지 + 추천 직업 찾기</div>
+    <div class="promptbox" id="p1">너는 20년차 커리어 컨설턴트야. 아래 내 정보를 보고 나의 강점 3가지와 어울리는 직업을 알려줘.
+나이: (   )
+주요 경력: (   )
+주요 성과 2가지: (   )</div>
+    <button class="copybtn" data-t="p1">복사하기</button>
+  </div>
+
+  <div class="card">
+    <h2>가치관 카드</h2>
+    <div class="desc">내가 일에서 중요하게 여기는 핵심가치 3개</div>
+    <div class="promptbox" id="p2">내가 일과 삶에서 중요하게 생각하는 핵심 가치 3가지를 찾도록 질문을 5개만 해줘. 내 답을 들은 뒤 핵심가치 3개와 그 이유를 정리해줘.</div>
+    <button class="copybtn" data-t="p2">복사하기</button>
+  </div>
+
+  <div class="card">
+    <h2>인생곡선 (라이프라인)</h2>
+    <div class="desc">지난 경력의 굴곡에서 의미 뽑기</div>
+    <div class="promptbox" id="p3">내 경력의 중요한 순간들을 시간순으로 정리할게. 각 시점에서 내가 잘한 것과 배운 것을 뽑아, 나의 반복되는 강점 패턴을 알려줘.
+경력 순간들: (   )</div>
+    <button class="copybtn" data-t="p3">복사하기</button>
+  </div>
+
+  <div class="card">
+    <h2>강점–직업 매칭</h2>
+    <div class="desc">내 강점에 어울리는 직업군 추천</div>
+    <div class="promptbox" id="p4">내 강점은 (   )야. 이 강점을 살릴 수 있는 직업군 5가지와, 각 직업에서 이 강점이 어떻게 쓰이는지 알려줘. 중장년 재취업 관점으로.</div>
+    <button class="copybtn" data-t="p4">복사하기</button>
+  </div>
+
+  <div class="card">
+    <h2>이키가이 4원 (좋아함·잘함·돈됨·필요함)</h2>
+    <div class="desc">네 가지가 겹치는 나의 일 찾기</div>
+    <div class="promptbox" id="p5">이키가이 개념으로 나를 분석해줘. ①내가 좋아하는 것 ②잘하는 것 ③돈이 되는 것 ④세상이 필요로 하는 것을 물어보고, 네 가지가 겹치는 나만의 일 방향을 제안해줘.</div>
+    <button class="copybtn" data-t="p5">복사하기</button>
+  </div>
+
+  <div class="card">
+    <h2>나 사용설명서</h2>
+    <div class="desc">내 강점·주의점·협업법 요약</div>
+    <div class="promptbox" id="p6">아래 내 정보로 '나 사용설명서'를 만들어줘. ①나의 강점 ②함께 일할 때 주의점 ③나와 잘 맞는 협업 방식을 표로 정리해줘.
+내 정보: (   )</div>
+    <button class="copybtn" data-t="p6">복사하기</button>
+  </div>
+
+  <div class="sec">③ 마무리 — "제2인생의 나" 이미지 🎨</div>
+  <div class="card">
+    <h2>나의 미래 이미지 만들기</h2>
+    <div class="desc">ChatGPT/제미나이 이미지 생성에 붙여넣기</div>
+    <div class="promptbox" id="p7">50대 (성별)이 새로운 일을 시작하며 밝고 자신감 있게 웃는 모습을, 따뜻한 분위기의 사진처럼 그려줘. 배경은 깔끔하게.</div>
+    <button class="copybtn" data-t="p7">복사하기</button>
+    <div class="tip">💡 재미로 만드는 동기부여 이미지예요. 마음에 안 들면 "더 밝게"처럼 말로 고쳐요.</div>
+  </div>
+
+  <footer>
+    화성시민대학 · AI로 여는 나의 제2인생 · 1회차<br>
+    개인정보를 수집하지 않는 안내용 페이지입니다.
+  </footer>
+</div>
+<script>
+document.querySelectorAll('.copybtn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.getAttribute('data-t'));
+    var txt=el.innerText;
+    function done(){var o=b.textContent;b.textContent='✅ 복사됨';setTimeout(function(){b.textContent=o;},1200);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){fallback(txt,done);});}
+    else{fallback(txt,done);}
+  });
+});
+function fallback(txt,cb){var t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(t);cb&&cb();}
+</script>
+</body>
+</html>
