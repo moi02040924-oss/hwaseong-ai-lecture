@@ -2,146 +2,521 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
-<title>화성시민대학 · AI로 여는 제2인생 · 1회차</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>화성 1회차 · AI, 처음이어도 괜찮아요</title>
+<meta name="description" content="화성시민대학 AI로 여는 나의 제2인생 1회차. 제미나이 첫걸음부터 강점 발견·나 사용설명서·이력서 사진까지. 복사 버튼을 눌러 붙여넣기만 하세요.">
 <style>
-  :root{--main:#C2410C;--main-d:#9A3412;--main-l:#FFF3EC;--paper:#FAFAF8;--ink:#22242B;--sub:#5A5E6B;--line:#EADFD6;}
-  *{box-sizing:border-box;margin:0;}
-  body{background:var(--paper);color:var(--ink);font-family:"Malgun Gothic","맑은 고딕",system-ui,sans-serif;
-    font-size:18px;line-height:1.65;word-break:keep-all;}
-  .wrap{max-width:640px;margin:0 auto;padding:0 18px 60px;}
-  header{background:linear-gradient(160deg,var(--main),var(--main-d));color:#fff;text-align:center;
-    padding:34px 20px 30px;border-radius:0 0 22px 22px;}
-  header .badge{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);
-    padding:5px 15px;border-radius:999px;font-size:15px;font-weight:700;margin-bottom:12px;}
-  header h1{font-size:25px;font-weight:800;margin-bottom:8px;}
-  header p{font-size:16px;opacity:.95;}
-  .lead{background:var(--main-l);color:var(--main-d);border-radius:14px;padding:15px 18px;margin:24px 0 18px;font-size:16px;}
-  .sec{font-size:16px;font-weight:800;color:var(--main-d);margin:26px 0 10px;}
-  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;margin-bottom:14px;
-    box-shadow:0 2px 8px rgba(60,40,20,.05);}
-  .card h2{font-size:18.5px;color:var(--main-d);margin-bottom:4px;}
-  .card .desc{font-size:15px;color:var(--sub);margin-bottom:10px;}
-  .promptbox{position:relative;background:#2b2b2b;color:#f4f4f4;border-radius:12px;padding:14px 14px 14px;
-    font-size:15px;line-height:1.55;white-space:pre-wrap;margin-top:8px;}
-  .copybtn{display:inline-block;margin-top:10px;background:var(--main);color:#fff;border:none;
-    padding:11px 20px;border-radius:10px;font-size:15.5px;font-weight:800;cursor:pointer;font-family:inherit;}
-  .copybtn:active{background:var(--main-d);}
-  .tip{background:#FFF8F2;border-left:4px solid var(--main);border-radius:8px;padding:11px 14px;font-size:14.5px;color:#6b4a35;margin-top:8px;}
-  footer{text-align:center;color:var(--sub);font-size:14px;margin-top:30px;line-height:1.7;}
-  .step{font-size:15px;color:var(--sub);}
+:root{
+  --bg:#fdf8f3; --card:#ffffff; --ink:#2b2118; --sub:#6b5847; --line:#f0e3d5;
+  --brand:#c2610c; --brand2:#e07b1a; --brand-soft:#fdf0e2; --brand-ink:#94480a;
+  --ok:#0f8a5f; --info:#1d6fa5; --info-soft:#e9f3fa;
+  --warn:#b91c1c; --warn-soft:#fef4f2;
+  --dark:#2a1f16;
+  --radius:18px; --shadow:0 2px 12px rgba(90,60,30,.09);
+  --maxw:760px;
+}
+*{box-sizing:border-box;-webkit-text-size-adjust:100%;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Apple SD Gothic Neo","Malgun Gothic","맑은 고딕",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:20px; line-height:1.72; word-break:keep-all; overflow-wrap:anywhere;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 16px 70px;}
+
+header{background:linear-gradient(135deg,var(--brand) 0%,var(--brand2) 100%); color:#fff; padding:32px 16px 26px; text-align:center;}
+.hd-in{max-width:var(--maxw); margin:0 auto;}
+.hbadge{display:inline-block; background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.42);
+  padding:6px 16px; border-radius:999px; font-size:16px; font-weight:800; margin-bottom:14px;}
+header h1{font-size:29px; line-height:1.32; margin:0 0 10px; font-weight:800;}
+header .sub{font-size:18px; opacity:.97; margin:0; line-height:1.55;}
+.ver{margin-top:14px; font-size:15px; opacity:.92;}
+
+.howto{background:#fffdf3; border-bottom:2px solid #f0e6c0; padding:18px 16px;}
+.howto-in{max-width:var(--maxw); margin:0 auto;}
+.howto h2{font-size:21px; margin:0 0 10px; color:#7a5b18;}
+.howto ol{margin:0; padding-left:26px;}
+.howto li{font-size:18.5px; margin:6px 0; color:#5c4a1a; font-weight:600;}
+.howto .big{color:var(--brand-ink); font-weight:800;}
+
+nav.toc{position:sticky; top:0; z-index:20; background:rgba(253,248,243,.97);
+  backdrop-filter:blur(6px); border-bottom:1px solid var(--line); padding:11px 0;}
+.toc-in{max-width:var(--maxw); margin:0 auto; padding:0 12px; display:flex; gap:9px;
+  overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;}
+.toc-in::-webkit-scrollbar{display:none;}
+.toc a{flex:0 0 auto; font-size:16px; font-weight:800; color:#fff;
+  background:var(--brand); padding:9px 15px; border-radius:999px; text-decoration:none; white-space:nowrap;}
+.toc a:active{background:var(--brand-ink);}
+
+section{margin-top:34px; scroll-margin-top:64px;}
+.sec-h{display:flex; align-items:center; gap:11px; margin:0 0 8px;}
+.sec-h .sn{font-size:19px; font-weight:800; color:#fff; background:var(--brand);
+  width:38px; height:38px; border-radius:12px; display:grid; place-items:center; flex:0 0 auto;}
+.sec-h h2{font-size:25px; margin:0; line-height:1.35; font-weight:800;}
+.sec-lead{color:var(--sub); font-size:18px; margin:0 0 14px;}
+
+.card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  padding:20px 18px; box-shadow:var(--shadow); margin-bottom:14px;}
+.card h3{font-size:21px; margin:0 0 10px; color:var(--brand-ink); font-weight:800;}
+.card p{margin:0 0 10px;} .card p:last-child{margin-bottom:0;}
+.card .tag{display:inline-block; background:var(--brand-soft); color:var(--brand-ink);
+  font-size:15px; font-weight:800; padding:4px 12px; border-radius:999px; margin-bottom:8px;}
+
+.steps{list-style:none; margin:0; padding:0; counter-reset:st;}
+.steps li{counter-increment:st; position:relative; padding:12px 0 12px 52px; border-bottom:1px dashed var(--line);}
+.steps li:last-child{border-bottom:0; padding-bottom:0;}
+.steps li::before{content:counter(st); position:absolute; left:0; top:12px;
+  width:36px; height:36px; border-radius:50%; background:var(--brand-soft); color:var(--brand-ink);
+  font-weight:800; font-size:19px; display:grid; place-items:center;}
+.steps b{display:block; font-size:20px; margin-bottom:2px;}
+.steps span{color:var(--sub); font-size:18px;}
+
+.prompt{background:var(--dark); color:#f6ece2; border-radius:14px; padding:16px 16px 14px; margin:14px 0 0;}
+.prompt .plabel{font-size:15px; font-weight:800; color:#f3b878; margin-bottom:8px;}
+.prompt .ptext{font-size:18.5px; line-height:1.68; white-space:pre-wrap; margin:0 0 12px; color:#fdf6f0;}
+.copy{width:100%; border:0; border-radius:12px; background:var(--ok); color:#fff;
+  font-size:19px; font-weight:800; padding:14px 12px; cursor:pointer; font-family:inherit; transition:background .15s;}
+.copy:active,.copy.done{background:#0a6b49;}
+
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+@media (max-width:560px){ .grid2{grid-template-columns:1fr;} }
+.mini{background:var(--brand-soft); border-radius:14px; padding:14px;}
+.mini b{display:block; color:var(--brand-ink); font-size:19px; margin-bottom:4px;}
+.mini span{font-size:17.5px; color:var(--sub);}
+
+.tips{margin:12px 0 0; padding-left:22px;}
+.tips li{font-size:17.5px; color:var(--sub); margin:6px 0;}
+
+.info{background:var(--info-soft); border:1px solid #bfdcf0; border-left:6px solid var(--info);
+  border-radius:14px; padding:16px; margin-top:14px;}
+.info b{color:#14568a; display:block; margin-bottom:6px; font-size:19px;}
+.info p{margin:0; font-size:17.5px; color:#2c5f88;}
+
+.warn{background:var(--warn-soft); border:1px solid #f6c3bb; border-left:6px solid var(--warn);
+  border-radius:14px; padding:16px; margin-top:14px;}
+.warn b{color:#991b1b; display:block; margin-bottom:6px; font-size:19px;}
+.warn p,.warn li{font-size:17.5px; color:#8a2d22; margin:0;}
+.warn ul{margin:0; padding-left:22px;} .warn li{margin:5px 0;}
+
+.key{background:var(--brand-ink); color:#fff; border-radius:var(--radius); padding:22px 18px;}
+.key h3{color:#fff; font-size:22px; margin:0 0 14px; text-align:center;}
+.key ol{margin:0; padding-left:24px;}
+.key li{font-size:19px; margin:9px 0; line-height:1.55;}
+
+.linkbtn{display:block; text-align:center; background:var(--brand); color:#fff; text-decoration:none;
+  font-size:20px; font-weight:800; padding:16px; border-radius:14px; margin-top:12px;}
+.linkbtn:active{background:var(--brand-ink);}
+
+footer{margin-top:42px; padding-top:20px; border-top:1px solid var(--line); text-align:center;
+  color:var(--sub); font-size:16px; line-height:1.6;}
+.note{font-size:16px; color:var(--sub); margin-top:10px;}
+.toast{position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(20px);
+  background:var(--dark); color:#fff; padding:13px 22px; border-radius:999px; font-size:18px; font-weight:700;
+  opacity:0; pointer-events:none; transition:all .25s; z-index:60;}
+.toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
 </style>
 </head>
 <body>
-<div id="pwgate" style="position:fixed;inset:0;background:#9A3412;color:#fff;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Malgun Gothic',sans-serif;padding:20px;text-align:center;">
-<div style="font-size:23px;font-weight:800;margin-bottom:8px;">🔒 화성시민대학 AI 배움터</div>
-<div style="font-size:16px;opacity:.9;margin-bottom:18px;">비밀번호를 입력하세요</div>
-<input id="pwin" type="password" autocomplete="off" style="font-size:18px;padding:13px 14px;border-radius:10px;border:none;width:min(260px,80vw);text-align:center;" placeholder="비밀번호">
-<button id="pwbtn" style="margin-top:12px;font-size:17px;font-weight:800;padding:13px 30px;border:none;border-radius:10px;background:#FFE3D0;color:#9A3412;cursor:pointer;">들어가기</button>
-<div id="pwerr" style="margin-top:10px;font-size:14px;color:#FFD6D6;min-height:18px;"></div>
-</div>
-<script>
-(function(){var PW="HS2026";
-try{if(sessionStorage.getItem('hs_ok')==='1'){var g=document.getElementById('pwgate');if(g)g.remove();return;}}catch(e){}
-function h2e(s){var Cho="ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ".split(""),Jung="ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ".split(""),Jong="_ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ".split("");var m={"ㅂ":"q","ㅃ":"q","ㅈ":"w","ㅉ":"w","ㄷ":"e","ㄸ":"e","ㄱ":"r","ㄲ":"r","ㅅ":"t","ㅆ":"t","ㅛ":"y","ㅕ":"u","ㅑ":"i","ㅐ":"o","ㅒ":"o","ㅔ":"p","ㅖ":"p","ㅁ":"a","ㄴ":"s","ㅇ":"d","ㄹ":"f","ㅎ":"g","ㅗ":"h","ㅓ":"j","ㅏ":"k","ㅣ":"l","ㅋ":"z","ㅌ":"x","ㅊ":"c","ㅍ":"v","ㅠ":"b","ㅜ":"n","ㅡ":"m"};var cp={"ㅘ":"ㅗㅏ","ㅙ":"ㅗㅐ","ㅚ":"ㅗㅣ","ㅝ":"ㅜㅓ","ㅞ":"ㅜㅔ","ㅟ":"ㅜㅣ","ㅢ":"ㅡㅣ","ㄳ":"ㄱㅅ","ㄵ":"ㄴㅈ","ㄶ":"ㄴㅎ","ㄺ":"ㄹㄱ","ㄻ":"ㄹㅁ","ㄼ":"ㄹㅂ","ㄽ":"ㄹㅅ","ㄾ":"ㄹㅌ","ㄿ":"ㄹㅍ","ㅀ":"ㄹㅎ","ㅄ":"ㅂㅅ"};function jm(ch){if(cp[ch])return jm(cp[ch][0])+jm(cp[ch][1]);return m[ch]||ch;}var out="";for(var i=0;i<s.length;i++){var c=s[i],code=s.charCodeAt(i);if(code>=0xAC00&&code<=0xD7A3){var x=code-0xAC00;out+=jm(Cho[Math.floor(x/588)])+jm(Jung[Math.floor((x%588)/28)]);var jo=Jong[x%28];if(jo!=="_")out+=jm(jo);}else{out+=jm(c);}}return out;}
-function norm(v){return h2e(v.trim()).toLowerCase();}
-function t(){var v=document.getElementById('pwin').value;if(norm(v)===norm(PW)){try{sessionStorage.setItem('hs_ok','1');}catch(e){}var g=document.getElementById('pwgate');if(g)g.remove();}else{document.getElementById('pwerr').textContent='비밀번호가 틀렸어요';}}
-document.getElementById('pwbtn').addEventListener('click',t);
-document.getElementById('pwin').addEventListener('keydown',function(e){if(e.key==='Enter')t();});
-document.getElementById('pwin').focus();})();
-</script>
 
 <header>
-  <div class="badge">AI로 여는 나의 제2인생</div>
-  <h1>1회차 · AI 첫걸음 &amp; 스마트 자기탐색</h1>
-  <p>화성시민대학 · 강사 임금희 · 2026</p>
+  <div class="hd-in">
+    <div class="hbadge">화성시민대학 · AI로 여는 나의 제2인생 · 1회차</div>
+    <h1>AI, 처음이어도<br>괜찮아요</h1>
+    <p class="sub">제미나이 첫걸음 · 나를 발견하기 · 이미지로 나를 담다</p>
+    <p class="ver">천천히 따라오시면 됩니다. 못 따라와도 옆에서 도와드려요.<br>강사 임금희 · 커리어숲</p>
+  </div>
 </header>
+
+<div class="howto">
+  <div class="howto-in">
+    <h2>이 페이지 쓰는 법</h2>
+    <ol>
+      <li>강의 중에 이 페이지를 <span class="big">폰으로 열어 두세요.</span></li>
+      <li>검은 상자의 <span class="big">[복사하기]</span> 단추를 누르세요.</li>
+      <li>AI 입력창을 <span class="big">꾹 누르고 '붙여넣기'</span> 하세요.</li>
+      <li>괄호 <span class="big">( )</span> 안만 내 이야기로 바꾸면 끝!</li>
+      <li>타자가 힘들면 <span class="big">🎤 마이크</span>를 눌러 말로 하셔도 됩니다.</li>
+    </ol>
+  </div>
+</div>
+
+<nav class="toc">
+  <div class="toc-in">
+    <a href="#s1">AI가 뭐예요?</a>
+    <a href="#s2">제미나이 시작</a>
+    <a href="#s3">첫 질문</a>
+    <a href="#s4">나를 발견하기</a>
+    <a href="#s5">이미지로 나를 담다</a>
+    <a href="#s6">오늘의 순서</a>
+  </div>
+</nav>
+
 <div class="wrap">
-  <div class="lead">📱 아래 프롬프트는 <b>[복사하기]</b>를 누르면 바로 복사돼요. ( ) 안만 내 것으로 바꿔서 ChatGPT에 붙여넣으세요.</div>
 
-  <div class="sec">① 준비 — ChatGPT 시작</div>
-  <div class="card">
-    <h2>ChatGPT 5단계로 시작</h2>
-    <div class="desc">크롬/엣지에서 chat.openai.com 접속</div>
-    <div class="step">① 접속 → [Sign up] → ② 이메일·비밀번호(8자↑) → ③ 이메일 인증(스팸함도 확인) → ④ 이름 입력 → ⑤ 첫 질문 시작</div>
-    <div class="tip">💡 타이핑이 어려우면 스마트폰 마이크 버튼으로 <b>말해서</b> 질문하세요.</div>
-  </div>
+  <section id="s1">
+    <div class="sec-h"><div class="sn">1</div><h2>AI가 뭐예요?</h2></div>
+    <p class="sec-lead">어렵게 생각하지 마세요. 사실 이미 쓰고 계셨습니다.</p>
 
-  <div class="sec">② AI로 나를 다각도로 분석하기</div>
+    <div class="card">
+      <h3>이런 게 다 AI예요</h3>
+      <div class="grid2">
+        <div class="mini"><b>내비게이션</b><span>길 안내하고 막히는 길 피해 주는 것</span></div>
+        <div class="mini"><b>유튜브 추천</b><span>내가 좋아할 영상을 알아서 골라 주는 것</span></div>
+        <div class="mini"><b>스마트폰 사진 보정</b><span>얼굴 알아보고 자동으로 밝게 해 주는 것</span></div>
+        <div class="mini"><b>은행 이상거래 감지</b><span>평소와 다른 결제를 잡아내는 것</span></div>
+      </div>
+      <p class="note">특별한 게 아니라, 생활 곳곳에 이미 들어와 있습니다. <b>몰랐을 뿐이에요.</b></p>
+    </div>
 
-  <div class="card">
-    <h2>강점 발견</h2>
-    <div class="desc">내 경력에서 강점 3가지 + 추천 직업 찾기</div>
-    <div class="promptbox" id="p1">너는 20년차 커리어 컨설턴트야. 아래 내 정보를 보고 나의 강점 3가지와 어울리는 직업을 알려줘.
-나이: (   )
-주요 경력: (   )
-주요 성과 2가지: (   )</div>
-    <button class="copybtn" data-t="p1">복사하기</button>
-  </div>
+    <div class="card">
+      <h3>꼭 알아둘 점 — AI는 가끔 '당당하게' 틀립니다</h3>
+      <p>이걸 <b>'환각(할루시네이션)'</b>이라고 불러요. 모르는 걸 모른다고 안 하고, 그럴듯하게 지어내는 겁니다.</p>
+      <div class="warn">
+        <b>그래서 이렇게 쓰세요</b>
+        <ul>
+          <li>숫자·날짜·법·제도 같은 건 <b>꼭 다시 확인</b>하세요.</li>
+          <li>이상하면 <b>"그거 정말이야? 어디서 봤어?"</b>라고 되물으세요.</li>
+          <li>중요한 서류에 넣기 전엔 사람이 한 번 더 읽어 보세요.</li>
+        </ul>
+      </div>
+      <div class="info"><b>AI는 부조종사, 결정은 사람</b><p>AI는 옆에서 돕는 조수예요. <b>운전대는 내가 잡습니다.</b> 오늘 이 말만 기억하셔도 절반은 성공입니다.</p></div>
+    </div>
 
-  <div class="card">
-    <h2>가치관 카드</h2>
-    <div class="desc">내가 일에서 중요하게 여기는 핵심가치 3개</div>
-    <div class="promptbox" id="p2">내가 일과 삶에서 중요하게 생각하는 핵심 가치 3가지를 찾도록 질문을 5개만 해줘. 내 답을 들은 뒤 핵심가치 3개와 그 이유를 정리해줘.</div>
-    <button class="copybtn" data-t="p2">복사하기</button>
-  </div>
+    <div class="card">
+      <h3>ChatGPT · 제미나이 · 코파일럿 — 뭐가 다를까?</h3>
+      <p>셋 다 '대화형 AI'예요. <b>하나만 잘 써도 충분합니다.</b> 오늘은 <b>제미나이</b>로 실습해요.</p>
+      <div class="grid2">
+        <div class="mini"><b>ChatGPT</b><span>글쓰기·정리를 잘해요. 이미지도 만들어요.</span></div>
+        <div class="mini"><b>제미나이 (오늘 사용)</b><span>구글이 만든 무료 AI. 구글 계정만 있으면 바로 씁니다.</span></div>
+        <div class="mini"><b>코파일럿</b><span>윈도우·오피스와 잘 붙어 있어요.</span></div>
+        <div class="mini"><b>기억할 것</b><span>다 비슷합니다. 하나에 익숙해지면 나머지도 금방 써요.</span></div>
+      </div>
+    </div>
 
-  <div class="card">
-    <h2>인생곡선 (라이프라인)</h2>
-    <div class="desc">지난 경력의 굴곡에서 의미 뽑기</div>
-    <div class="promptbox" id="p3">내 경력의 중요한 순간들을 시간순으로 정리할게. 각 시점에서 내가 잘한 것과 배운 것을 뽑아, 나의 반복되는 강점 패턴을 알려줘.
-경력 순간들: (   )</div>
-    <button class="copybtn" data-t="p3">복사하기</button>
-  </div>
+    <div class="card">
+      <h3>프롬프트 = AI에게 말 거는 것</h3>
+      <p>어려운 말 아닙니다. 그냥 <b>'부탁'</b>이에요.</p>
+      <div class="grid2">
+        <div class="mini"><b>말 거는 방법 3가지</b><span>① 타자로 쓰기 ② 🎤 마이크로 말하기 ③ 사진 올리고 물어보기</span></div>
+        <div class="mini"><b>좋은 부탁의 기본 틀</b><span>「나는 누구인지 + 무엇을 원하는지 + 어떻게 답해 줄지」 — 내 상황을 알려주면 답이 확 좋아집니다.</span></div>
+      </div>
+    </div>
+  </section>
 
-  <div class="card">
-    <h2>강점–직업 매칭</h2>
-    <div class="desc">내 강점에 어울리는 직업군 추천</div>
-    <div class="promptbox" id="p4">내 강점은 (   )야. 이 강점을 살릴 수 있는 직업군 5가지와, 각 직업에서 이 강점이 어떻게 쓰이는지 알려줘. 중장년 재취업 관점으로.</div>
-    <button class="copybtn" data-t="p4">복사하기</button>
-  </div>
+  <section id="s2">
+    <div class="sec-h"><div class="sn">2</div><h2>제미나이 시작하기</h2></div>
+    <p class="sec-lead">구글이 만든 무료 AI입니다. 3단계면 준비 끝!</p>
 
-  <div class="card">
-    <h2>이키가이 4원 (좋아함·잘함·돈됨·필요함)</h2>
-    <div class="desc">네 가지가 겹치는 나의 일 찾기</div>
-    <div class="promptbox" id="p5">이키가이 개념으로 나를 분석해줘. ①내가 좋아하는 것 ②잘하는 것 ③돈이 되는 것 ④세상이 필요로 하는 것을 물어보고, 네 가지가 겹치는 나만의 일 방향을 제안해줘.</div>
-    <button class="copybtn" data-t="p5">복사하기</button>
-  </div>
+    <a class="linkbtn" href="https://gemini.google.com" target="_blank" rel="noopener">제미나이 열기 (gemini.google.com)</a>
 
-  <div class="card">
-    <h2>나 사용설명서</h2>
-    <div class="desc">내 강점·주의점·협업법 요약</div>
-    <div class="promptbox" id="p6">아래 내 정보로 '나 사용설명서'를 만들어줘. ①나의 강점 ②함께 일할 때 주의점 ③나와 잘 맞는 협업 방식을 표로 정리해줘.
-내 정보: (   )</div>
-    <button class="copybtn" data-t="p6">복사하기</button>
-  </div>
+    <div class="card" style="margin-top:14px;">
+      <h3>접속 · 설치 3단계</h3>
+      <ul class="steps">
+        <li><b>주소창에 입력</b><span>크롬 주소창에 gemini.google.com 입력 (또는 위 단추 누르기)</span></li>
+        <li><b>구글 계정 로그인</b><span>평소 쓰던 지메일 계정으로 로그인하면 됩니다</span></li>
+        <li><b>폰에 바로가기 만들기</b><span>폰 브라우저 메뉴 → '홈 화면에 추가' — 다음부터 앱처럼 열려요</span></li>
+      </ul>
+    </div>
 
-  <div class="sec">③ 마무리 — "제2인생의 나" 이미지 🎨</div>
-  <div class="card">
-    <h2>나의 미래 이미지 만들기</h2>
-    <div class="desc">ChatGPT/제미나이 이미지 생성에 붙여넣기</div>
-    <div class="promptbox" id="p7">50대 (성별)이 새로운 일을 시작하며 밝고 자신감 있게 웃는 모습을, 따뜻한 분위기의 사진처럼 그려줘. 배경은 깔끔하게.</div>
-    <button class="copybtn" data-t="p7">복사하기</button>
-    <div class="tip">💡 재미로 만드는 동기부여 이미지예요. 마음에 안 들면 "더 밝게"처럼 말로 고쳐요.</div>
-  </div>
+    <div class="card">
+      <h3>화면 어디가 뭔지 볼까요</h3>
+      <p>복잡해 보여도 실제로 쓰는 곳은 딱 몇 군데예요.</p>
+      <div class="grid2">
+        <div class="mini"><b>아래 입력창</b><span>여기에 부탁을 씁니다. 가장 많이 쓰는 곳!</span></div>
+        <div class="mini"><b>🎤 마이크</b><span>타자가 힘들면 눌러서 말로 하세요</span></div>
+        <div class="mini"><b>＋ 버튼</b><span>사진·파일을 올릴 때 (이따 사진 실습에 씁니다)</span></div>
+        <div class="mini"><b>왼쪽 목록</b><span>지난 대화가 저장돼 있어요. 다시 이어서 물어볼 수 있습니다.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="s3">
+    <div class="sec-h"><div class="sn">3</div><h2>자, 첫 질문을 넣어봐요</h2></div>
+    <p class="sec-lead">아래 문장을 그대로 넣어 보세요. 답이 오면 성공입니다!</p>
+
+    <div class="card">
+      <ul class="steps">
+        <li><b>입력창을 누른다</b><span>커서가 깜빡이면 준비 완료</span></li>
+        <li><b>아래 문장을 붙여넣는다</b><span>타자 어려우면 🎤 마이크로 말해요</span></li>
+        <li><b>보내기 → 답 확인</b><span>AI가 인사하면 성공!</span></li>
+      </ul>
+      <div class="prompt">
+        <div class="plabel">첫 실습 · 그대로 따라 쓰기</div>
+        <p class="ptext">안녕? 나는 화성에 사는 60대야. 오늘 처음 너랑 얘기해봐. 짧게 인사해줘.</p>
+        <button class="copy">복사하기</button>
+      </div>
+      <p class="note">답이 조금 이상해도 괜찮아요. <b>원래 그렇습니다.</b> 잘 안 되면 손 드세요 — 바로 도와드립니다.</p>
+    </div>
+
+    <div class="info"><b>☕ 여기서 휴식 10분</b><p>쉬고 오면 '나 발견'과 '이미지 만들기'로 이어집니다.</p></div>
+  </section>
+
+  <section id="s4">
+    <div class="sec-h"><div class="sn">4</div><h2>나를 발견하기 — 6가지 중 골라서</h2></div>
+    <p class="sec-lead">여섯 가지 중에서 마음에 드는 것을 골라 씁니다. <b>다 안 해도 괜찮아요.</b> ①과 ⑥만 해도 오늘 결과물이 남습니다.</p>
+
+    <div class="card">
+      <span class="tag">① 대표 실습 · 꼭 해보세요</span>
+      <h3>강점 발견 — 경력에서 강점 3가지</h3>
+      <p>워크시트에 적은 경력을 넣으면, 나만의 강점 3가지를 뽑아줍니다.</p>
+      <div class="prompt">
+        <div class="plabel">📋 붙여넣을 프롬프트</div>
+        <p class="ptext">나는 (나이)대이고, (   경력·해온 일   )을 해왔어.
+내가 특히 뿌듯했던 일은 (   1~3가지   )이야.
+이걸 바탕으로 나의 강점 3가지를 쉬운 말로 정리하고,
+각 강점마다 그렇게 본 이유를 한 줄씩 붙여줘. 표로 보여줘.</p>
+        <button class="copy">복사하기</button>
+      </div>
+      <ul class="tips">
+        <li>나온 강점 3개를 종이 <b>'강점 카드'</b>에 그대로 옮겨 적기 — 손으로 써야 내 것이 됩니다</li>
+        <li>어색한 강점은 <b>"이건 왜 그렇게 봤어?"</b>라고 되물어 확인</li>
+        <li>🎤 타자가 힘들면 마이크 켜고 말로 불러줘도 됩니다</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="tag">② 선택</span>
+      <h3>가치관 카드 — 핵심 가치 3개</h3>
+      <p>내가 일과 삶에서 중요하게 여기는 '핵심 가치 3개'를 찾습니다. 앞으로 <b>선택의 기준</b>이 됩니다.</p>
+      <div class="prompt">
+        <div class="plabel">📋 붙여넣을 프롬프트</div>
+        <p class="ptext">나는 (나이)대이고, (   내 상황·고민   )이야.
+내가 보람이나 만족을 느꼈던 순간을 2~3가지 말할게:
+(   예: 사람을 도울 때, 내 시간을 자유롭게 쓸 때   )
+이걸 보고 내 핵심 가치 3개를 뽑고, 각 가치를 한 문장으로 쉽게 설명해줘.</p>
+        <button class="copy">복사하기</button>
+      </div>
+      <ul class="tips">
+        <li>핵심 가치 3개는 직업·목표를 고를 때 <b>나만의 잣대</b>가 됩니다</li>
+        <li>'이 가치에 맞는 일 예시도 알려줘'를 덧붙이면 더 구체적</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="tag">③ 선택</span>
+      <h3>인생곡선 — 굴곡에서 찾는 의미</h3>
+      <p>살아온 굴곡을 그려, '내가 언제 힘이 났는지'와 그 안의 의미를 찾습니다.</p>
+      <div class="prompt">
+        <div class="plabel">📋 붙여넣을 프롬프트</div>
+        <p class="ptext">내 인생의 중요한 순간을 시간 순서로 말할게.
+(   예: 20대 취업 좋았음 / 40대 폐업 힘들었음 / 지금 새 출발 준비   )
+각 시기에 내가 무엇을 배웠는지, 그리고 그 경험이
+지금 나에게 어떤 강점이 됐는지 따뜻하게 정리해줘.</p>
+        <button class="copy">복사하기</button>
+      </div>
+      <ul class="tips">
+        <li>힘들었던 시기도 <b>'거기서 뭘 배웠나'</b>로 바꾸면 나의 자산이 됩니다</li>
+        <li>종이에 가로선을 긋고 위/아래로 점을 찍으며 같이 그려보기</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="tag">④ 다음 시간과 연결</span>
+      <h3>강점–직업 매칭 — 어울리는 일 후보</h3>
+      <p>내 강점에 어울리는 '직업·일자리 후보'를 넓게 받아봅니다. <b>정답이 아니라 '후보 넓히기'</b>가 목적입니다.</p>
+      <div class="prompt">
+        <div class="plabel">📋 붙여넣을 프롬프트</div>
+        <p class="ptext">내 강점은 (   강점 3가지   )이야.
+나는 (나이)대이고 (   재취업 / 창업 / 자유롭게   ) 쪽을 생각 중이야.
+이 강점을 살릴 수 있는 직업이나 일 5가지를 추천하고,
+각각 어떤 점이 내 강점과 맞는지 한 줄씩 알려줘. 표로 보여줘.</p>
+        <button class="copy">복사하기</button>
+      </div>
+      <ul class="tips">
+        <li>처음 듣는 직업이 나오면 <b>'그건 무슨 일이야?'</b>라고 되묻기</li>
+        <li>끌리는 것 2개에 별표 → <b>다음 시간(2회차) 시장조사 대상</b>이 됩니다</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="tag">⑤ 선택</span>
+      <h3>이키가이 4원 — 네 가지의 교차점</h3>
+      <p>좋아함·잘함·돈됨·세상필요 — 네 가지가 겹치는 '내 일'을 찾습니다. ('이키가이' = 삶의 보람)</p>
+      <div class="prompt">
+        <div class="plabel">📋 붙여넣을 프롬프트</div>
+        <p class="ptext">나에 대해 4가지를 말할게.
+① 좋아하는 것: (      )   ② 잘하는 것: (      )
+③ 돈이 될 만한 것: (      )   ④ 세상에 필요한 것: (      )
+이 넷이 겹치는 지점에서 내가 도전해볼 일 3가지를 제안하고 이유도 설명해줘.</p>
+        <button class="copy">복사하기</button>
+      </div>
+      <ul class="tips">
+        <li>네 칸을 <b>다 못 채워도 됩니다</b> — 아는 것만 적어도 OK</li>
+        <li>'가장 현실적인 것부터 알려줘'를 덧붙이면 우선순위까지</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="tag">⑥ 오늘의 최종 결과물 · 꼭 해보세요</span>
+      <h3>나 사용설명서 — 나를 한 장으로</h3>
+      <p>앞에서 나온 결과를 모아 '나를 소개하는 한 장'으로 정리합니다.</p>
+      <div class="prompt">
+        <div class="plabel">📋 붙여넣을 프롬프트</div>
+        <p class="ptext">지금까지 나온 내 강점, 핵심 가치, 어울리는 일을 모아서
+'나 사용설명서'를 만들어줘. 항목은 이렇게:
+① 나의 강점  ② 중요히 여기는 것  ③ 함께 일할 때 좋은 점  ④ 배려할 점
+누가 봐도 쉽게, 따뜻한 말투로 한 장 분량으로 정리해줘.</p>
+        <button class="copy">복사하기</button>
+      </div>
+      <ul class="tips">
+        <li>완성되면 <b>캡처해 저장</b> — 면접·상담·자기소개에 바로 활용</li>
+        <li>가족·지인에게 보여주고 '나 이런 것 같아?' 물어보기</li>
+        <li>이후 <b>최종 포트폴리오의 표지</b>가 됩니다</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="s5">
+    <div class="sec-h"><div class="sn">5</div><h2>이미지로 나를 담다</h2></div>
+    <p class="sec-lead">사진 실습입니다. 잘 나올 필요 없어요 — <b>재미로 해보는 것</b>이 목적입니다.</p>
+
+    <div class="warn">
+      <b>사진 실습 전 꼭 지킬 것</b>
+      <ul>
+        <li><b>본인 얼굴 사진만</b> 사용하세요. 남의 사진·유명인 사진은 안 됩니다(초상권).</li>
+        <li>과한 보정은 피하세요 — 이력서 사진은 <b>실제 나</b>와 너무 달라지면 안 됩니다.</li>
+        <li>무료 이미지 생성은 <b>하루 한도</b>가 있어요. 안 되면 다음 시간에 이어서 합니다.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>① 이력서·증명 사진 만들기</h3>
+      <p><b>준비물:</b> 내 얼굴 사진 1장 &nbsp;|&nbsp; <b>도구:</b> ChatGPT(무료) 또는 제미나이</p>
+      <ul class="steps">
+        <li><b>사진 올리기</b><span>채팅창 아래 '＋'(사진 첨부)로 내 얼굴 사진 1장 올리기</span></li>
+        <li><b>프롬프트 붙여넣기</b><span>아래 문장을 복사해 붙여넣고 보내기</span></li>
+        <li><b>마음에 안 들면 다시</b><span>'더 밝게 / 배경 흰색으로' 하고 다시 요청</span></li>
+        <li><b>저장</b><span>마음에 드는 컷 저장 → 이력서·구직등록에 사용</span></li>
+      </ul>
+      <div class="prompt">
+        <div class="plabel">📋 붙여넣을 프롬프트</div>
+        <p class="ptext">이 얼굴 사진을 바탕으로,
+단정한 정장 차림의 증명사진으로 만들어줘.
+배경은 밝은 회색, 비율은 3:4, 표정은 온화하게.
+실제 내 얼굴 특징은 그대로 유지해줘.</p>
+        <button class="copy">복사하기</button>
+      </div>
+      <p class="note">🎯 <b>기대 결과:</b> 흰/회색 배경의 단정한 증명사진 1장 — 이력서·구직등록에 바로 사용 가능</p>
+    </div>
+
+    <div class="card">
+      <h3>② 전신 프로필 사진 만들기</h3>
+      <p>면접·온라인 프로필용 전신 사진도 만들 수 있어요. 여러 컨셉을 재미로!</p>
+      <div class="prompt">
+        <div class="plabel">📋 붙여넣을 프롬프트</div>
+        <p class="ptext">이 사진을 바탕으로,
+(   깔끔한 정장 / 단정한 캐주얼   ) 차림의
+전신 프로필 사진을 만들어줘.
+배경은 (   밝은 사무실 / 깔끔한 스튜디오   ),
+자신감 있고 밝은 분위기로. 얼굴 특징은 그대로.</p>
+        <button class="copy">복사하기</button>
+      </div>
+      <ul class="tips">
+        <li>'배경을 사무실로 / 야외로' 등 바꿔서 여러 장 만들어 보기</li>
+        <li>가장 자신 있어 보이는 컷을 저장</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>③ 🎨 '제2인생의 나' 이미지 1컷</h3>
+      <p>내 얼굴 사진 없이도 됩니다. 새로 출발하는 내 모습을 <b>상상해서</b> 그려봅니다.</p>
+      <div class="prompt">
+        <div class="plabel">📋 이렇게 부탁해 보세요</div>
+        <p class="ptext">50대 (나 같은 사람)이,
+(   새로 도전하고 싶은 모습: 예 - 밝은 카페에서 손님을 맞는 모습   )
+을 하고 있는 그림을 그려줘.
+분위기는 밝고 따뜻하고 자신감 있게, 실사풍으로.</p>
+        <button class="copy">복사하기</button>
+      </div>
+      <ul class="tips">
+        <li>마음에 안 들면 '더 밝게', '배경을 바꿔서' 하고 얼마든지 다시 요청하세요</li>
+        <li>잘 나온 그림은 저장 → 나만의 <b>'제2인생 명함'</b> 느낌. 목표를 눈으로 보면 힘이 납니다</li>
+        <li>정답도, 잘 그릴 필요도 없어요. 웃으며 해보는 것 자체가 목적입니다 😊</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>④ 나의 이야기로 '그림책' 만들기</h3>
+      <p>내 인생 이야기를 짧은 그림책으로! <b>손주 선물</b>로도 좋아요.</p>
+      <ul class="steps">
+        <li><b>이야기 한 조각 넣기</b><span>아래 프롬프트에 내 이야기를 넣어요</span></li>
+        <li><b>이야기 + 장면 설명 받기</b><span>AI가 짧은 이야기와 장면 설명을 만들어 줍니다</span></li>
+        <li><b>삽화 요청</b><span>'각 장면을 그림으로 그려줘'라고 이어서 부탁</span></li>
+        <li><b>저장</b><span>글+그림을 캡처해 나만의 그림책으로</span></li>
+      </ul>
+      <div class="prompt">
+        <div class="plabel">📋 붙여넣을 프롬프트</div>
+        <p class="ptext">나는 (나이)대이고,
+(   내 인생의 한 장면: 예-고향에서 자란 이야기   )을
+어린이 그림책처럼 4장면의 짧은 이야기로 만들어줘.
+따뜻하고 쉬운 말로, 각 장면마다 그림 설명도 붙여줘.</p>
+        <button class="copy">복사하기</button>
+      </div>
+      <p class="note">🎯 <b>기대 결과:</b> 4장면짜리 나만의 그림책 초안 — 자서전·손주 선물·자기소개 자료로 확장 가능<br>시간이 부족하면 <b>글만 먼저</b> 만들고 그림은 집에서 이어서 해도 됩니다.</p>
+    </div>
+  </section>
+
+  <section id="s6">
+    <div class="sec-h"><div class="sn">6</div><h2>오늘 이렇게 하세요</h2></div>
+    <p class="sec-lead">전부 다 할 필요 없어요. 아래 순서만 따라오면 <b>오늘 결과물이 손에 남습니다.</b></p>
+
+    <div class="key">
+      <h3>이 순서만 따라오세요</h3>
+      <ol>
+        <li><b>제미나이 접속</b> — 로그인까지</li>
+        <li><b>첫 질문 넣어보기</b> — 답이 오면 성공!</li>
+        <li><b>① 강점 발견</b> — 내 강점 3가지 뽑고 종이에 옮겨 적기</li>
+        <li><b>⑥ 나 사용설명서</b> — 한 장으로 정리해서 캡처 저장</li>
+        <li><b>이미지 1장</b> — 증명사진이든 '제2인생의 나'든 하나만</li>
+      </ol>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h3>여기까지 잘 오셨어요</h3>
+      <p>오늘 정말 많은 걸 해내셨습니다. 처음 AI를 켜고, 나를 들여다보고, 내 얼굴을 담은 사진까지 만들었어요.</p>
+      <p><b>다음 시간(2회차)</b>에는 오늘 별표 친 <b>직업 후보 2가지</b>를 가지고 시장조사를 해 봅니다. 오늘 만든 '나 사용설명서'를 꼭 저장해 오세요.</p>
+    </div>
+  </section>
 
   <footer>
     화성시민대학 · AI로 여는 나의 제2인생 · 1회차<br>
-    개인정보를 수집하지 않는 안내용 페이지입니다.
+    강사 임금희 · 커리어숲<br>
+    <span class="note">도구의 무료/유료 조건과 화면(메뉴 위치)은 자주 바뀝니다. 사용 시점에 실제 화면에서 확인하세요.</span>
   </footer>
 </div>
+
+<div class="toast" id="toast">복사했어요! 붙여넣기 하세요</div>
+
 <script>
-document.querySelectorAll('.copybtn').forEach(function(b){
-  b.addEventListener('click',function(){
-    var el=document.getElementById(b.getAttribute('data-t'));
-    var txt=el.innerText;
-    function done(){var o=b.textContent;b.textContent='✅ 복사됨';setTimeout(function(){b.textContent=o;},1200);}
-    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){fallback(txt,done);});}
-    else{fallback(txt,done);}
+(function(){
+  var toast = document.getElementById('toast'), timer;
+  function show(msg){
+    toast.textContent = msg; toast.classList.add('show');
+    clearTimeout(timer); timer = setTimeout(function(){ toast.classList.remove('show'); }, 1800);
+  }
+  function fallbackCopy(text){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.setAttribute('readonly','');
+    ta.style.position='fixed'; ta.style.top='-1000px';
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); }catch(e){}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll('.copy').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var box = btn.closest('.prompt');
+      var text = box.querySelector('.ptext').innerText.trim();
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(ok, function(){ fallbackCopy(text); ok(); });
+      } else { fallbackCopy(text); ok(); }
+      function ok(){
+        btn.textContent = '복사됨 ✓'; btn.classList.add('done');
+        show('복사했어요! 붙여넣기 하세요');
+        setTimeout(function(){ btn.textContent='복사하기'; btn.classList.remove('done'); }, 2200);
+      }
+    });
   });
-});
-function fallback(txt,cb){var t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(t);cb&&cb();}
+})();
 </script>
 </body>
 </html>
